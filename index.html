@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#060914">
+  <meta name="color-scheme" content="dark">
+  <title>Volta ao Lar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- MENU -->
+  <section id="screen-menu" class="screen active">
+    <div class="logo" aria-label="Volta ao Lar"><span>D</span><span>A</span><span></span>D<span>O</span></div>
+    <p class="tagline">De 2 a 6 jogadores, online ou no mesmo aparelho.</p>
+    <ul class="chips"><li>Celular</li><li>Tablet</li><li>Computador</li></ul>
+    <div class="menu-actions">
+      <button class="btn big blue" id="btn-online">Modo Online</button>
+      <button class="btn big green" id="btn-local">Modo Local</button>
+    </div>
+  </section>
+
+  <!-- MODO LOCAL -->
+  <section id="screen-local" class="screen">
+    <h2>Modo Local</h2>
+    <div class="card">
+      <label>Número de jogadores</label>
+      <div class="segmented" id="local-count"></div>
+      <div class="seats" id="local-seats"></div>
+      <button class="btn big green" id="btn-local-start">Iniciar partida</button>
+      <button class="btn ghost" data-go="menu">Voltar</button>
+    </div>
+  </section>
+
+  <!-- MODO ONLINE -->
+  <section id="screen-online" class="screen">
+    <h2>Modo Online</h2>
+    <div class="card">
+      <div>
+        <label for="online-name">Seu nome</label>
+        <input type="text" id="online-name" maxlength="12" placeholder="Como quer ser chamado?" autocomplete="nickname">
+      </div>
+      <div class="split">
+        <div class="box">
+          <h3>Criar sala</h3>
+          <p>Você recebe um código para enviar aos amigos. Funciona entre celular, tablet e computador.</p>
+          <button class="btn blue" id="btn-create">Criar sala</button>
+        </div>
+        <div class="box">
+          <h3>Entrar em uma sala</h3>
+          <input type="text" id="online-code" class="code" maxlength="5" placeholder="CÓDIGO" autocomplete="off" aria-label="Código da sala">
+          <button class="btn green" id="btn-join">Entrar</button>
+        </div>
+      </div>
+      <p class="status" id="online-status" role="status"></p>
+      <button class="btn ghost" data-go="menu">Voltar</button>
+    </div>
+  </section>
+
+  <!-- SALA (LOBBY) -->
+  <section id="screen-lobby" class="screen">
+    <h2>Sala de espera</h2>
+    <div class="card">
+      <label>Código da sala</label>
+      <div class="room-code" id="lobby-code">-----</div>
+      <div class="row">
+        <button class="btn small" id="btn-copy-code">Copiar código</button>
+        <button class="btn small" id="btn-copy-link">Copiar link</button>
+      </div>
+      <h3 id="lobby-count">Jogadores</h3>
+      <ul class="plist" id="lobby-list"></ul>
+      <p class="status" id="lobby-status"></p>
+      <button class="btn big gold" id="btn-start">Iniciar partida</button>
+      <button class="btn ghost" id="btn-lobby-leave">Sair da sala</button>
+    </div>
+  </section>
+
+  <!-- JOGO -->
+  <section id="screen-game" class="screen">
+    <header class="topbar">
+      <button class="btn small ghost" id="btn-leave">Sair</button>
+      <span id="room-badge"></span>
+    </header>
+    <main class="game-layout">
+      <div class="board-wrap">
+        <svg id="board" viewBox="-8.2 -8.2 16.4 16.4" role="img" aria-label="Tabuleiro de Ludo"></svg>
+        <div id="center-dice" class="dice" title="Rolar dado"></div>
+      </div>
+      <aside class="panel">
+        <div class="banner" id="turn-banner"></div>
+        <div class="roll-box">
+          <button class="roll-btn" id="btn-roll" disabled>
+            <span class="dice big" id="dice-big"></span>
+            <span>Rolar dado</span>
+          </button>
+        </div>
+        <p id="msg" aria-live="polite"></p>
+        <div id="players-list"></div>
+      </aside>
+    </main>
+  </section>
+
+  <!-- VITÓRIA -->
+  <div id="overlay">
+    <div class="win-card">
+      <div class="trophy">🏆</div>
+      <h2 id="win-title">Fim de jogo</h2>
+      <p id="win-sub"></p>
+      <button class="btn gold" id="btn-again">Jogar novamente</button>
+      <button class="btn ghost" id="btn-win-menu">Voltar ao menu</button>
+    </div>
+  </div>
+
+  <div id="toast" role="status"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
